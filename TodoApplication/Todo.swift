@@ -11,9 +11,9 @@ import RealmSwift
 
 
 class Todo:Object {
-    dynamic var title: String? = nil
-    dynamic var updateTime: Date? = nil
-    dynamic var isDone:Bool? = false
+    @objc dynamic var title: String? = nil
+    @objc dynamic var updateTime: Date? = nil
+//    dynamic var isDone:Bool? = false
     
 //    @objc dynamic var category: String? = nil
     

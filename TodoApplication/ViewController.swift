@@ -39,16 +39,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func createTodo(title: String) {
 //        aleartInputDialog()
+        print("createDialog")
         let instanceTodo: Todo = Todo()
+        print("INSTANCE Todo OK")
         //get Date
         let now = Date()
+        print("Date get ok")
         instanceTodo.title = title
         instanceTodo.updateTime = now
+        print("instanceTodo title and updateTime OK!")
         let insRealm = try! Realm()
         try! insRealm.write {
             insRealm.add(instanceTodo)
         }
+        print("realm save Done!")
         self.tableView.reloadData()
+        print("reload tableView Done!")
 
     }
     
