@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 //    @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
+    
 
 
 //    @IBOutlet var titleLabel: UILabel!
@@ -25,7 +26,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         self.itemList = realm.objects(Todo.self)
-
+        
+        self.tableView.delegate = self
         self.tableView.dataSource = self
 
     }
@@ -39,22 +41,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func createTodo(title: String) {
 //        aleartInputDialog()
-        print("createDialog")
         let instanceTodo: Todo = Todo()
-        print("INSTANCE Todo OK")
         //get Date
         let now = Date()
-        print("Date get ok")
         instanceTodo.title = title
         instanceTodo.updateTime = now
-        print("instanceTodo title and updateTime OK!")
         let insRealm = try! Realm()
         try! insRealm.write {
             insRealm.add(instanceTodo)
         }
-        print("realm save Done!")
         self.tableView.reloadData()
-        print("reload tableView Done!")
 
     }
     
@@ -98,7 +94,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath) as! ListTableViewCell
@@ -113,6 +109,7 @@ extension ViewController: UITableViewDataSource {
 
         cell.titleLabel.text = item.title
         cell.updateTime.text = f.string(from: item.updateTime!)
+        
 
         print(item.title as Any)
         return cell
@@ -122,6 +119,16 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.itemList.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //セルの選択解除
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("Clicked!")
+        //ここに遷移処理を書く
+//        self.present(SecondViewController(), animated: true, completion: nil)
+    }
+    
+
 
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) -> UITableViewCell {
 //

@@ -12,6 +12,7 @@ class ListTableViewCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var updateTime: UILabel!
+    @IBOutlet var checkBox: CheckBox!
 
     override func awakeFromNib() {
         super.awakeFromNib()
