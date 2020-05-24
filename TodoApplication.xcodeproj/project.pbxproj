@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EA4392D242C758100728272 /* Pods_TodoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C842E3065CF35CF209680CD0 /* Pods_TodoApplication.framework */; };
 		1EA43931242C7F2500728272 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA43930242C7F2500728272 /* CheckBox.swift */; };
 		1EA43933242D618F00728272 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA43932242D618F00728272 /* TodoTableViewController.swift */; };
 		1EB2E6E3242B3B0700750427 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E6E2242B3B0700750427 /* AppDelegate.swift */; };
@@ -18,6 +17,7 @@
 		1EB2E6EF242B3B0800750427 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EB2E6ED242B3B0800750427 /* LaunchScreen.storyboard */; };
 		1EB2E6F7242B456A00750427 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E6F6242B456A00750427 /* Todo.swift */; };
 		1EB2E704242C564C00750427 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E703242C564C00750427 /* ListTableViewCell.swift */; };
+		A7082FE94E81732E26C9ED01 /* Pods_TodoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C842E3065CF35CF209680CD0 /* Pods_TodoApplication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EA4392D242C758100728272 /* Pods_TodoApplication.framework in Frameworks */,
+				A7082FE94E81732E26C9ED01 /* Pods_TodoApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +114,7 @@
 				1EB2E6DB242B3B0700750427 /* Sources */,
 				1EB2E6DC242B3B0700750427 /* Frameworks */,
 				1EB2E6DD242B3B0700750427 /* Resources */,
-				E9C5156C9BF49E221EEB85EA /* [CP] Embed Pods Frameworks */,
+				921AECBE6FBFC30CDC4FF983 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,7 +194,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E9C5156C9BF49E221EEB85EA /* [CP] Embed Pods Frameworks */ = {
+		921AECBE6FBFC30CDC4FF983 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

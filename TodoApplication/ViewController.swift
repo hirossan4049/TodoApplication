@@ -110,6 +110,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.updateTime.text = f.string(from: item.updateTime!)
         
+        cell.checkBox.change_checkbox(check: true)
+        
 
         print(item.title as Any)
         return cell
@@ -123,9 +125,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //セルの選択解除
         tableView.deselectRow(at: indexPath, animated: true)
+//        let cell:TestCell = tableView.cellForRow(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath) as! ListTableViewCell
+//        cell.checkBox.change_checkbox(check: true)
+        cell.titleLabel.text = "hello"
+        
+
         print("Clicked!")
+        tableView.reloadData()
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
+    }
+    private func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+        //        cell.checkBox.change_checkbox(check: true)
+        cell.titleLabel.text = "ola"
     }
     
 
