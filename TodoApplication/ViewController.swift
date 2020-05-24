@@ -110,10 +110,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.updateTime.text = f.string(from: item.updateTime!)
         
-        cell.checkBox.change_checkbox(check: true)
+        cell.checkBox.change_checkbox(check: item.isDone!)
         
 
         print(item.title as Any)
+        print(item.isDone)
         return cell
     }
 
@@ -125,22 +126,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //セルの選択解除
         tableView.deselectRow(at: indexPath, animated: true)
-//        let cell:TestCell = tableView.cellForRow(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath) as! ListTableViewCell
-//        cell.checkBox.change_checkbox(check: true)
-        cell.titleLabel.text = "hello"
         
+        let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
+        let realm = try! Realm()
+        try! realm.write {
+            item.title = "helloooooooo"
+            item.isDone = true
+            print("realm")
+            print(item.isDone)
+        }
+        print(item.isDone)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+        cell.checkBox.change_checkbox(check: item.isDone!)
+
 
         print("Clicked!")
-        tableView.reloadData()
+//        tableView.reloadData()
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
     }
-    private func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
-        //        cell.checkBox.change_checkbox(check: true)
-        cell.titleLabel.text = "ola"
-    }
+//    private func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+//        //        cell.checkBox.change_checkbox(check: true)
+//        cell.titleLabel.text = "ola"
+//    }
     
 
 

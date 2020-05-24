@@ -13,7 +13,7 @@ import RealmSwift
 class Todo:Object {
     @objc dynamic var title: String? = nil
     @objc dynamic var updateTime: Date? = nil
-//    dynamic var isDone:Bool? = false
+    dynamic var isDone:Bool? = false
     
 //    @objc dynamic var category: String? = nil
     
