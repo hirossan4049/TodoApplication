@@ -110,7 +110,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.updateTime.text = f.string(from: item.updateTime!)
         
-        cell.checkBox.change_checkbox(check: item.isDone!)
+        cell.checkBox.change_checkbox(check: item.isDone)
         
 
         print(item.title as Any)
@@ -130,18 +130,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
         let realm = try! Realm()
         try! realm.write {
-            item.title = "helloooooooo"
-            item.isDone = true
-            print("realm")
+            item.isDone = !item.isDone
             print(item.isDone)
         }
         print(item.isDone)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
-        cell.checkBox.change_checkbox(check: item.isDone!)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+//        cell.checkBox.change_checkbox(check: item.isDone!)
 
 
         print("Clicked!")
-//        tableView.reloadData()
+        tableView.reloadData()
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
     }
