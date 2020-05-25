@@ -2,6 +2,7 @@
 **swift勉強用。**
 <br>
 
+<img width="459" alt="スクリーンショット 2020-05-25 23 16 18" src="https://user-images.githubusercontent.com/50548952/82820800-d105ca00-9edd-11ea-81a2-b47bfda3b869.png">
 
 
 
