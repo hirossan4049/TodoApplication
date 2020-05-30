@@ -25,11 +25,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let realm = try! Realm()
-        self.itemList = realm.objects(Todo.self)
+        self.itemList = realm.objects(Todo.self).filter("isDone == False")
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)],
+                                  with: .automatic)
+        self.tableView.endUpdates()
+//        self.tableView.reloadData()
     }
 
 
@@ -50,7 +59,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         try! insRealm.write {
             insRealm.add(instanceTodo)
         }
-        self.tableView.reloadData()
+        self.tableView.beginUpdates()
+        
+        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
+                                  with: .automatic)
+        self.tableView.endUpdates()
+//        self.tableView.reloadData()
 
     }
     
@@ -139,6 +153,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 
         print("Clicked!")
+        self.tableView.beginUpdates()
+        
+//        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
+//                                  with: .automatic)
+        self.tableView.deleteRows(at: [IndexPath(row: self.itemList.count, section: 0)], with: .automatic)
+
+        self.tableView.endUpdates()
+        
         tableView.reloadData()
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D0a-6n-P0y">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,19 +13,18 @@
             <objects>
                 <viewController id="UzS-Cz-pao" customClass="DoneViewController" customModule="TodoApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EFu-Ap-MXW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jro-Zm-N0S">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jro-Zm-N0S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestCell" rowHeight="65" id="7Hi-Ru-i3k" customClass="ListTableViewCell" customModule="TodoApplication" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestCell" rowHeight="64" id="7Hi-Ru-i3k" customClass="ListTableViewCell" customModule="TodoApplication" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Hi-Ru-i3k" id="EjX-QD-dVF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqF-X3-1kA">
@@ -40,7 +39,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2030/02/14 17:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piI-qb-4nh">
-                                                    <rect key="frame" x="247.5" y="41" width="121.5" height="18"/>
+                                                    <rect key="frame" x="286.66666666666669" y="40" width="121.33333333333331" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,6 +60,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hur-CZ-Zrc" firstAttribute="trailing" secondItem="jro-Zm-N0S" secondAttribute="trailing" id="7YY-in-val"/>
+                            <constraint firstItem="jro-Zm-N0S" firstAttribute="leading" secondItem="hur-CZ-Zrc" secondAttribute="leading" id="Gax-AD-Rlw"/>
+                            <constraint firstItem="jro-Zm-N0S" firstAttribute="bottom" secondItem="hur-CZ-Zrc" secondAttribute="bottom" id="Lgp-1x-cEO"/>
+                            <constraint firstItem="jro-Zm-N0S" firstAttribute="top" secondItem="hur-CZ-Zrc" secondAttribute="top" id="PvC-ZY-QP8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hur-CZ-Zrc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Done" image="checkmark.circle" catalog="system" id="0rK-8x-j9h"/>
@@ -70,32 +75,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8X-R6-xQc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-477.60000000000002" y="210.94452773613196"/>
+            <point key="canvasLocation" x="-478.26086956521743" y="210.9375"/>
         </scene>
         <!--Todo-->
         <scene sceneID="xEV-Hf-EhS">
             <objects>
                 <viewController id="fas-6c-78S" customClass="ViewController" customModule="TodoApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sO4-Ra-aRg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-yt-Dsk">
-                                <rect key="frame" x="313" y="6" width="46" height="30"/>
+                                <rect key="frame" x="352" y="50" width="46" height="30"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createPress" destination="fas-6c-78S" eventType="touchUpInside" id="Sbj-Q1-NYX"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZVE-lf-xrb">
-                                <rect key="frame" x="0.0" y="44" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TestCell" rowHeight="65" id="QRB-VW-mGm" customClass="ListTableViewCell" customModule="TodoApplication" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QRB-VW-mGm" id="eVr-pY-6a3">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPJ-bJ-oOW">
@@ -110,7 +115,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2030/02/14 17:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftS-th-PF4">
-                                                    <rect key="frame" x="247.5" y="41" width="121.5" height="18"/>
+                                                    <rect key="frame" x="286.66666666666669" y="41" width="121.33333333333331" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
@@ -135,7 +140,11 @@
                             <constraint firstItem="2aH-yt-Dsk" firstAttribute="top" secondItem="3F4-7g-QS8" secondAttribute="top" constant="6" id="0BE-0H-h6Y"/>
                             <constraint firstItem="3F4-7g-QS8" firstAttribute="trailing" secondItem="2aH-yt-Dsk" secondAttribute="trailing" constant="16" id="4oo-qg-GvH"/>
                             <constraint firstAttribute="trailing" secondItem="ZVE-lf-xrb" secondAttribute="trailing" id="CEa-rj-5II"/>
+                            <constraint firstItem="ZVE-lf-xrb" firstAttribute="bottom" secondItem="3F4-7g-QS8" secondAttribute="bottom" constant="33" id="CVB-o2-wxX"/>
+                            <constraint firstItem="ZVE-lf-xrb" firstAttribute="leading" secondItem="3F4-7g-QS8" secondAttribute="leading" id="JNZ-hI-znT"/>
                             <constraint firstAttribute="bottom" secondItem="ZVE-lf-xrb" secondAttribute="bottom" constant="50" id="cQO-GA-AHw"/>
+                            <constraint firstItem="3F4-7g-QS8" firstAttribute="trailing" secondItem="ZVE-lf-xrb" secondAttribute="trailing" id="fmb-k6-Wlf"/>
+                            <constraint firstItem="ZVE-lf-xrb" firstAttribute="top" secondItem="2aH-yt-Dsk" secondAttribute="bottom" constant="64" id="hx1-gs-CFK"/>
                             <constraint firstItem="ZVE-lf-xrb" firstAttribute="leading" secondItem="3F4-7g-QS8" secondAttribute="leading" id="qgF-HD-S4T"/>
                             <constraint firstItem="ZVE-lf-xrb" firstAttribute="top" secondItem="2aH-yt-Dsk" secondAttribute="bottom" constant="6" id="qkJ-lX-0lL"/>
                         </constraints>
@@ -148,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTF-oD-3sL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-477.60000000000002" y="-437.63118440779613"/>
+            <point key="canvasLocation" x="-478.26086956521743" y="-437.94642857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aFa-z4-iQx">

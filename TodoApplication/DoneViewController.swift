@@ -20,9 +20,14 @@ class DoneViewController: UIViewController{
         self.doneTableView.dataSource = self
         
         let realm = try! Realm()
-        self.itemList = realm.objects(Todo.self)
+        self.itemList = realm.objects(Todo.self).filter("isDone == True")
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.doneTableView.reloadData()
     }
     
 
