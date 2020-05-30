@@ -18,6 +18,7 @@
 		1EB2E6F7242B456A00750427 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E6F6242B456A00750427 /* Todo.swift */; };
 		1EB2E704242C564C00750427 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2E703242C564C00750427 /* ListTableViewCell.swift */; };
 		A7082FE94E81732E26C9ED01 /* Pods_TodoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C842E3065CF35CF209680CD0 /* Pods_TodoApplication.framework */; };
+		D3E7391D248205BA00BA069C /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7391C248205BA00BA069C /* DoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		33A9A516B7FDB6B7765A7481 /* Pods-TodoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApplication.release.xcconfig"; path = "Target Support Files/Pods-TodoApplication/Pods-TodoApplication.release.xcconfig"; sourceTree = "<group>"; };
 		9310E7616C4BB6C1EFA03DF8 /* Pods-TodoApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApplication.debug.xcconfig"; path = "Target Support Files/Pods-TodoApplication/Pods-TodoApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		C842E3065CF35CF209680CD0 /* Pods_TodoApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E7391C248205BA00BA069C /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				1EB2E703242C564C00750427 /* ListTableViewCell.swift */,
 				1EA43930242C7F2500728272 /* CheckBox.swift */,
 				1EA43932242D618F00728272 /* TodoTableViewController.swift */,
+				D3E7391C248205BA00BA069C /* DoneViewController.swift */,
 			);
 			path = TodoApplication;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E7391D248205BA00BA069C /* DoneViewController.swift in Sources */,
 				1EB2E6E7242B3B0700750427 /* ViewController.swift in Sources */,
 				1EB2E6E3242B3B0700750427 /* AppDelegate.swift in Sources */,
 				1EA43931242C7F2500728272 /* CheckBox.swift in Sources */,
