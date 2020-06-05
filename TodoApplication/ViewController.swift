@@ -34,11 +34,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)],
-                                  with: .automatic)
-        self.tableView.endUpdates()
-//        self.tableView.reloadData()
+//        self.tableView.beginUpdates()
+//        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)],
+//                                  with: .automatic)
+//        self.tableView.endUpdates()
+        self.tableView.reloadData()
     }
 
 
@@ -157,11 +157,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
 //        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
 //                                  with: .automatic)
-        self.tableView.deleteRows(at: [IndexPath(row: self.itemList.count, section: 0)], with: .automatic)
-
+        print("TABLEVIEW DELETE NOW....",indexPath.row)
+        self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
         self.tableView.endUpdates()
+
+        print("TABLEVIEW DELETED!....")
+
+
         
-        tableView.reloadData()
+//        tableView.reloadData()
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
     }
