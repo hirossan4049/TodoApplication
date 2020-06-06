@@ -137,6 +137,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return self.itemList.count
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //セルの選択解除
         tableView.deselectRow(at: indexPath, animated: true)
@@ -148,20 +149,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             print(item.isDone)
         }
         print(item.isDone)
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
-//        cell.checkBox.change_checkbox(check: item.isDone!)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+        cell.checkBox.change_checkbox(check: item.isDone)
 
 
         print("Clicked!")
         self.tableView.beginUpdates()
+//        tableView.reloadData()
         
 //        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
 //                                  with: .automatic)
-        print("TABLEVIEW DELETE NOW....",indexPath.row)
-        self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
-        self.tableView.endUpdates()
+        // FIXME:１秒のスリープ中の連打
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: 1)
+            DispatchQueue.main.async {
+                print("TABLEVIEW DELETE NOW....",indexPath.row)
+                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+                self.tableView.endUpdates()
 
-        print("TABLEVIEW DELETED!....")
+                print("TABLEVIEW DELETED!....")
+            }
+        }
+        
 
 
         
