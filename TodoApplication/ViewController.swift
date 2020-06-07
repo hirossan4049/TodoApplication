@@ -139,37 +139,46 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //セルの選択解除
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
-        let realm = try! Realm()
-        try! realm.write {
-            item.isDone = !item.isDone
-            print(item.isDone)
-        }
-        print(item.isDone)
+        
+//        let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
+//        let realm = try! Realm()
+//        try! realm.write {
+//            item.isDone = !item.isDone
+//            print("tableClicked:" + String(item.isDone))
+//        }
+//        print(item.isDone)
         let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
-        cell.checkBox.change_checkbox(check: item.isDone)
+        cell.checkBox.change_checkbox(check: true)
+//        cell.checkBox.isChecked = true
+        
+//        cell.checkBox.change_checkbox(check: item.isDone)
+
 
 
         print("Clicked!")
-        self.tableView.beginUpdates()
-//        tableView.reloadData()
+        
+//        self.tableView.beginUpdates()
+        tableView.reloadData()
+
+
         
 //        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
 //                                  with: .automatic)
         // FIXME:１秒のスリープ中の連打
-        DispatchQueue.global().async {
-            Thread.sleep(forTimeInterval: 1)
-            DispatchQueue.main.async {
-                print("TABLEVIEW DELETE NOW....",indexPath.row)
-                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
-                self.tableView.endUpdates()
+//        DispatchQueue.global().async {
+//            Thread.sleep(forTimeInterval: 1)
+//            DispatchQueue.main.async {
+//                print("TABLEVIEW DELETE NOW....",indexPath.row)
+//                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+//                self.tableView.endUpdates()
+//
+//                print("TABLEVIEW DELETED!....")
+//            }
+//        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
 
-                print("TABLEVIEW DELETED!....")
-            }
-        }
         
 
 
