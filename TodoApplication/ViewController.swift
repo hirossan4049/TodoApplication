@@ -15,19 +15,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //    @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
     
-    var DoneWaitingList:[Int] = []
+    var DoneWaitingList:[Date] = []
     
 
 
 //    @IBOutlet var titleLabel: UILabel!
 
     var itemList: Results<Todo>!
+    var add_only_itemList: [Todo]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         self.itemList = realm.objects(Todo.self).filter("isDone == False")
+        
+        for item in self.itemList{
+            print(item)
+            self.add_only_itemList.append(item)
+        }
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -57,6 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let now = Date()
         instanceTodo.title = title
         instanceTodo.updateTime = now
+        self.add_only_itemList.append(instanceTodo)
         let insRealm = try! Realm()
         try! insRealm.write {
             insRealm.add(instanceTodo)
@@ -129,7 +136,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         // FIXME
         var isDWL:Bool = false
         for dwl_item in self.DoneWaitingList{
-            if dwl_item == indexPath.row{
+            if dwl_item == item.updateTime{
                 cell.checkBox.change_checkbox(check: true)
                 print("DONE WATING LIST")
                 isDWL = true
@@ -161,7 +168,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
 //        cell.checkBox.change_checkbox(check: item.isDone)
         
-        self.DoneWaitingList.append(indexPath.row)
+        let item: Todo = self.add_only_itemList[(indexPath as NSIndexPath).row]
+        self.DoneWaitingList.append(item.updateTime!)
         print("dwlist",self.DoneWaitingList)
         
 //        cell.checkBox.change_checkbox(check: item.isDone)
@@ -171,7 +179,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
         print("Clicked!")
         
-//        self.tableView.beginUpdates()
+
 
 
         
@@ -181,6 +189,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.global().async {
             Thread.sleep(forTimeInterval: 1)
             DispatchQueue.main.async {
+                self.DoneWaitingList.remove(value: item.updateTime!)
+
                 let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
                 let realm = try! Realm()
                 try! realm.write {
@@ -188,10 +198,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                     print("tableClicked:" + String(item.isDone))
                 }
                 print("TABLEVIEW DELETE NOW....",indexPath.row)
-                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
-                self.tableView.endUpdates()
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+                tableView.endUpdates()
                 print(self.DoneWaitingList)
-                self.DoneWaitingList.remove(value: indexPath.row)
 
 
                 print("TABLEVIEW DELETED!....")

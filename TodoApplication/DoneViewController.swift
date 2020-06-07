@@ -88,9 +88,9 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
 
 
         print("Clicked!")
-        tableView.reloadData()
-        //ここに遷移処理を書く
-//        self.present(SecondViewController(), animated: true, completion: nil)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+        tableView.endUpdates()
     }
     
     // Done delete
@@ -104,7 +104,8 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
             try! realm.write {
                 realm.delete(item)
             }
-//            tableView.reloadData()
+
+            tableView.beginUpdates()
             tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
             tableView.endUpdates()
             
