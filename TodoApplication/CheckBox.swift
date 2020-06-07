@@ -36,7 +36,9 @@ class CheckBox:UIButton{
     }
     
     @objc func change_checkbox(check: Bool){
+        print("CHECKED!!!!!",check)
         isChecked = check
+
     }
     
 }

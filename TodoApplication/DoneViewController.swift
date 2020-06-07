@@ -92,4 +92,22 @@ extension DoneViewController: UITableViewDelegate, UITableViewDataSource {
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
     }
+    
+    // Done delete
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
+            print(item.title)
+
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(item)
+            }
+//            tableView.reloadData()
+            tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+            tableView.endUpdates()
+            
+        }
+    }
 }

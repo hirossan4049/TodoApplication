@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //    @IBOutlet var textField: UITextField!
     @IBOutlet var tableView: UITableView!
     
+    var DoneWaitingList:[Int] = []
+    
 
 
 //    @IBOutlet var titleLabel: UILabel!
@@ -124,8 +126,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = item.title
         cell.updateTime.text = f.string(from: item.updateTime!)
         
-        cell.checkBox.change_checkbox(check: item.isDone)
-        
+        // FIXME
+        var isDWL:Bool = false
+        for dwl_item in self.DoneWaitingList{
+            if dwl_item == indexPath.row{
+                cell.checkBox.change_checkbox(check: true)
+                print("DONE WATING LIST")
+                isDWL = true
+                break
+            }
+
+        }
+        if isDWL == false{
+            cell.checkBox.change_checkbox(check: item.isDone)
+        }
+
 
         print(item.title as Any)
         print(item.isDone)
@@ -141,41 +156,47 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-//        let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
-//        let realm = try! Realm()
-//        try! realm.write {
-//            item.isDone = !item.isDone
-//            print("tableClicked:" + String(item.isDone))
-//        }
-//        print(item.isDone)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
-        cell.checkBox.change_checkbox(check: true)
-//        cell.checkBox.isChecked = true
+
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
+//        cell.checkBox.change_checkbox(check: item.isDone)
+        
+        self.DoneWaitingList.append(indexPath.row)
+        print("dwlist",self.DoneWaitingList)
         
 //        cell.checkBox.change_checkbox(check: item.isDone)
 
 
+        tableView.reloadData()
 
         print("Clicked!")
         
 //        self.tableView.beginUpdates()
-        tableView.reloadData()
 
 
         
 //        self.tableView.insertRows(at: [IndexPath(row: self.itemList.count - 1, section: 0)],
 //                                  with: .automatic)
-        // FIXME:１秒のスリープ中の連打
-//        DispatchQueue.global().async {
-//            Thread.sleep(forTimeInterval: 1)
-//            DispatchQueue.main.async {
-//                print("TABLEVIEW DELETE NOW....",indexPath.row)
-//                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
-//                self.tableView.endUpdates()
-//
-//                print("TABLEVIEW DELETED!....")
-//            }
-//        }
+        /// FIXME:１秒のスリープ中の連打
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: 1)
+            DispatchQueue.main.async {
+                let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
+                let realm = try! Realm()
+                try! realm.write {
+                    item.isDone = !item.isDone
+                    print("tableClicked:" + String(item.isDone))
+                }
+                print("TABLEVIEW DELETE NOW....",indexPath.row)
+                self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+                self.tableView.endUpdates()
+                print(self.DoneWaitingList)
+                self.DoneWaitingList.remove(value: indexPath.row)
+
+
+                print("TABLEVIEW DELETED!....")
+            }
+        }
         
         tableView.deselectRow(at: indexPath, animated: true)
 
@@ -187,6 +208,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         //ここに遷移処理を書く
 //        self.present(SecondViewController(), animated: true, completion: nil)
     }
+    
+    
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            print("delete")
+//            let item:Todo = self.itemList[(indexPath as NSIndexPath).row]
+//            print(item.title)
+//
+//            let realm = try! Realm()
+//            try! realm.write {
+//                realm.delete(item)
+//            }
+////            tableView.reloadData()
+//            self.tableView.deleteRows(at: [IndexPath(row: indexPath.row , section: 0)], with: .bottom)
+//            self.tableView.endUpdates()
+//
+//        }
+//    }
+    
+
+    
+    
+    
 //    private func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath as IndexPath) as! ListTableViewCell
 //        //        cell.checkBox.change_checkbox(check: true)
@@ -204,4 +249,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.textLabel?.text = item.title
 //        return cell
 //    }
+}
+
+extension Array where Element: Equatable {
+    mutating func remove(value: Element) {
+        if let i = self.index(of: value) {
+            self.remove(at: i)
+        }
+    }
 }
